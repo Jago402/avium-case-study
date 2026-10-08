@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study: Driver Provider | Avium</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0d0d0d;
+      color: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .page {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 50px;
+    }
+
+    /* Logo */
+    .logo { text-align: center; margin-bottom: 50px; }
+    .logo img { height: 44px; }
+
+    /* Header */
+    .tag {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #1b4eff;
+      margin-bottom: 16px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    h1 .green { color: #37ca37; }
+    .subtitle {
+      text-align: center;
+      font-size: 20px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 50px;
+    }
+
+    /* Client bar */
+    .client-bar {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.4);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 20px 0;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+    .client-bar strong { color: rgba(255,255,255,0.7); }
+    .dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.2); align-self: center; }
+
+    /* Metrics grid */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 50px;
+    }
+    .metric {
+      border: 1px solid rgba(27,78,255,0.2);
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+    }
+    .metric .num {
+      font-size: 44px;
+      font-weight: 900;
+      color: #1b4eff;
+      line-height: 1;
+    }
+    .metric .label {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 10px;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 16px;
+    }
+    .section-text {
+      font-size: 18px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+      margin-bottom: 44px;
+    }
+
+    /* Campaign table */
+    .table { margin-bottom: 44px; }
+    .table h2 { margin-bottom: 22px; }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 14px 22px;
+      margin-bottom: 8px;
+    }
+    .row .name { flex: 1; font-size: 16px; color: rgba(255,255,255,0.6); }
+    .row .leads { font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.8); margin-left: 16px; }
+    .row .cpl { font-size: 16px; font-weight: 700; color: #37ca37; margin-left: 16px; width: 70px; text-align: right; }
+    .row-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(27,78,255,0.1);
+      border: 1px solid rgba(27,78,255,0.2);
+      border-radius: 10px;
+      padding: 14px 22px;
+    }
+    .row-total .name { flex: 1; font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.8); }
+    .row-total .leads { font-size: 16px; font-weight: 900; color: #fff; margin-left: 16px; }
+    .row-total .cpl { font-size: 16px; font-weight: 900; color: #37ca37; margin-left: 16px; width: 70px; text-align: right; }
+
+    /* Impact cards */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+    .impact-card {
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 28px;
+      background: rgba(255,255,255,0.02);
+    }
+    .impact-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 10px;
+    }
+    .impact-card p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+    }
+
+    /* Testimonial */
+    .testimonial {
+      border: 2px solid rgba(27,78,255,0.2);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 44px;
+      background: rgba(255,255,255,0.02);
+    }
+    .testimonial p {
+      font-size: 22px;
+      font-style: italic;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .testimonial .attr {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .testimonial .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(27,78,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: #1b4eff;
+    }
+    .testimonial .attr-name { font-size: 17px; font-weight: 700; color: rgba(255,255,255,0.8); }
+    .testimonial .attr-detail { font-size: 14px; color: rgba(255,255,255,0.4); }
+
+    /* Before/After */
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 50px;
+    }
+    .ba-card {
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .ba-before {
+      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.02);
+    }
+    .ba-after {
+      border: 1px solid rgba(55,202,55,0.2);
+      background: rgba(55,202,55,0.03);
+    }
+    .ba-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 18px;
+    }
+    .ba-before .ba-label { color: rgba(255,255,255,0.3); }
+    .ba-after .ba-label { color: rgba(55,202,55,0.6); }
+    .ba-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .ba-item .icon-x { color: #ef4444; }
+    .ba-item .icon-check { color: #37ca37; }
+
+    /* CTA */
+    .cta-section { text-align: center; padding-top: 10px; }
+    .cta-section h2 {
+      font-size: 28px;
+      text-transform: none;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .cta-section h2 .blue { color: #1b4eff; }
+    .cta-section .sub {
+      font-size: 18px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 30px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #1b4eff;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 900;
+      padding: 20px 60px;
+      border-radius: 14px;
+      text-decoration: none;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      font-size: 12px;
+      color: rgba(255,255,255,0.15);
+    }
+
+    @media print {
+      body { background: #0d0d0d !important; }
+      .page { padding: 40px 40px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="logo">
+      <img src="https://avium.uk/avium-logo-white.png" alt="Avium" />
+    </div>
+
+    <p class="tag">Client Case Study</p>
+    <h1>1,879 Candidate Inquiries. Under £1.30 Each. Job Boards <span class="green">Replaced Entirely.</span></h1>
+    <p class="subtitle">How Avium built a candidate acquisition system for Driver Provider that delivered results in 7 minutes.</p>
+
+    <div class="client-bar">
+      <span><strong>Client:</strong> Driver Provider</span>
+      <span class="dot"></span>
+      <span><strong>Sector:</strong> HGV & Van Recruitment</span>
+      <span class="dot"></span>
+      <span><strong>Team:</strong> 25 staff</span>
+      <span class="dot"></span>
+      <span><strong>Operating:</strong> 7 years</span>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><div class="num">1,879</div><div class="label">Candidate Inquiries</div></div>
+      <div class="metric"><div class="num">£1.27</div><div class="label">Avg. Per Inquiry</div></div>
+      <div class="metric"><div class="num">56p</div><div class="label">Best Campaign (Van)</div></div>
+      <div class="metric"><div class="num">7 min</div><div class="label">Time To First Lead</div></div>
+    </div>
+
+    <h2>The Challenge</h2>
+    <p class="section-text">Driver Provider had been recruiting HGV and van drivers for seven years using Indeed, radio ads, and job boards. They were paying £10–£15 per candidate inquiry and spending thousands every month for diminishing returns. The same recycled candidates. Rising costs. Not enough people actively looking for driving work through traditional channels. They were struggling to supply drivers fast enough to retain their clients.</p>
+
+    <h2>The Solution</h2>
+    <p class="section-text">Avium built a fully managed candidate acquisition system using targeted Meta campaigns. Each campaign was built for a specific role type (HGV Class 1, Class 2, van drivers) and targeted to specific locations. Candidates filled out lead forms with their name, number, role interest, and location. Campaigns were updated weekly based on demand. Driver Provider's first campaign went live within 24 hours of onboarding. Their first candidate inquiry arrived in 7 minutes.</p>
+
+    <div class="table">
+      <h2>Campaign Breakdown</h2>
+      <div class="row"><span class="name">HGV Class 1 & 2 · Ipswich & Yeovil</span><span class="leads">1,079 leads</span><span class="cpl">£1.39</span></div>
+      <div class="row"><span class="name">Van Drivers · Wembley</span><span class="leads">351 leads</span><span class="cpl">£0.56</span></div>
+      <div class="row"><span class="name">HGV Class 1 & 2 · Dartford</span><span class="leads">212 leads</span><span class="cpl">£0.83</span></div>
+      <div class="row"><span class="name">HGV Class 2 · Immingham</span><span class="leads">159 leads</span><span class="cpl">£1.68</span></div>
+      <div class="row"><span class="name">HGV Class 2 · Carlisle</span><span class="leads">41 leads</span><span class="cpl">£4.28</span></div>
+      <div class="row"><span class="name">HGV Class 1 · Epping</span><span class="leads">37 leads</span><span class="cpl">£1.68</span></div>
+      <div class="row-total"><span class="name">Total</span><span class="leads">1,879 leads</span><span class="cpl">£1.27</span></div>
+    </div>
+
+    <h2>The Impact</h2>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <h3>Job Boards Replaced</h3>
+        <p>Driver Provider stopped using Indeed and traditional job boards entirely. Avium is now their sole candidate acquisition channel.</p>
+      </div>
+      <div class="impact-card">
+        <h3>New Office Opened</h3>
+        <p>The volume of candidates allowed them to expand operations and open a new office location.</p>
+      </div>
+      <div class="impact-card">
+        <h3>Up To 15 Locations</h3>
+        <p>Scaled from a handful of campaigns to 15 active locations across 4 role types, updated weekly.</p>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <p>"James and Jago delivered exactly what they promised. Avium have increased our online presence and consumer engagement dramatically and we now have a constant flow of new candidate applications. We feel confident that Avium have completely understood the assignment and nailed the delivery."</p>
+      <div class="attr">
+        <div class="avatar">DP</div>
+        <div>
+          <div class="attr-name">Driver Provider</div>
+          <div class="attr-detail">HGV & Van Recruitment · UK · 25 staff</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ba-grid">
+      <div class="ba-card ba-before">
+        <div class="ba-label">Before Avium</div>
+        <div class="ba-item"><span class="icon-x">✕</span> £10–£15 per candidate inquiry</div>
+        <div class="ba-item"><span class="icon-x">✕</span> Thousands per month on Indeed</div>
+        <div class="ba-item"><span class="icon-x">✕</span> Recycled candidates, radio ads</div>
+        <div class="ba-item"><span class="icon-x">✕</span> Struggling to supply enough drivers</div>
+      </div>
+      <div class="ba-card ba-after">
+        <div class="ba-label">After Avium</div>
+        <div class="ba-item"><span class="icon-check">✓</span> £1.27 average per candidate inquiry</div>
+        <div class="ba-item"><span class="icon-check">✓</span> 1,879 inquiries, job boards replaced</div>
+        <div class="ba-item"><span class="icon-check">✓</span> Fresh candidates daily via lead forms</div>
+        <div class="ba-item"><span class="icon-check">✓</span> New office opened, 15 locations active</div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h2>Want The Same Results For <span class="blue">Your Agency?</span></h2>
+      <p class="sub">Book a free strategy call. We'll map out how this system works for your roles and locations.</p>
+      <a href="https://avium.uk/recruitment#book" class="cta-btn">Book Your Free Strategy Call</a>
+    </div>
+
+    <div class="footer">© 2026 Avium. All rights reserved.</div>
+
+  </div>
+</body>
+</html>
